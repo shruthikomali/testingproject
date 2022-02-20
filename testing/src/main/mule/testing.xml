@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9d3a0984-65b8-4987-98de-de1b7c038293" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="testingFlow" doc:id="b267be9b-262b-4dd4-9ce2-1aab4ab5b8cd" >
+		<http:listener doc:name="Listener" doc:id="cbee63d9-0313-408d-813a-0fb4fa7a737d" config-ref="HTTP_Listener_config" path="testflow"/>
+		<logger level="INFO" doc:name="logger 1" doc:id="28a67414-1057-4cd9-a3f2-63a42401ef89" message="&gt;&gt;&gt;&gt;&gt;&gt; i am no 1 &lt;&lt;&lt;&lt;&lt;&lt;&lt;"/>
+		<logger level="INFO" doc:name="Logger 2" doc:id="d03c102d-401b-490a-9549-c62d0b6691d4" message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;i am no 2 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"/>
+		<flow-ref doc:name="Flow Reference" doc:id="4022cf39-849b-4c3c-8d7a-e52e8353a914" name="testingSub_Flow"/>
+		<logger level="INFO" doc:name="Logger 4" doc:id="5921e558-3766-4b5b-8e12-e8b7983108d0" message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; i am no 4 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"/>
+	</flow>
+	<sub-flow name="testingSub_Flow" doc:id="899494d1-6128-4d88-90d7-201dacf5505f" >
+		<logger level="INFO" doc:name="Logger 3" doc:id="cd826a0e-80de-47aa-8513-ad037240ad94" message="&gt;&gt;&gt;&gt;&gt;&gt;&gt; i am no 3 &lt;&lt;&lt;&lt;&lt;&lt;&lt;"/>
+	</sub-flow>
+</mule>
